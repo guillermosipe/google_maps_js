@@ -176,7 +176,6 @@ var customIcons = {
 
 
   function geocodeResult(results, status) {
-    debugger;
     if (status == 'OK') {
 
       window.map = new google.maps.Map(document.getElementById('map'), {
