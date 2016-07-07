@@ -168,52 +168,6 @@ var customIcons = {
 
     }
 
-    function load_posicion_mapa(latitud,longitud) {
-
-      window.map = new google.maps.Map(document.getElementById('map'), {
-        mapTypeId: google.maps.MapTypeId.ROADMAP,
-        scrollwheel: false,
-        navigationControl: false,
-        mapTypeControl: false,
-        scaleControl: false,
-        draggable: false,
-        disableDoubleClickZoom: true,
-        streetViewControl: false,
-        zoomControl: false
-      });
-
-      var infoWindow = new google.maps.InfoWindow;
-
-      var bounds = new google.maps.LatLngBounds();
-
-      var point = new google.maps.LatLng(
-              parseFloat(latitud),
-              parseFloat(longitud));
-
-      var icon = customIcons["rojo"];
-
-      var descripcion = "<b>Usted esta aqui</b>";
-      var marker = new google.maps.Marker({
-            map: map,
-            position: point,
-            icon: icon.icon,
-            shadow: icon.shadow
-          });
-      bounds.extend(marker.position);
-      bindInfoWindow(marker, map, infoWindow, descripcion);
-
-      map.fitBounds(bounds);
-      var listener = google.maps.event.addListener(map, "idle", function() {
-            if (map.getZoom() > 16)
-            {
-                map.setZoom(16);
-            }
-            google.maps.event.removeListener(listener);
-        });
-
-
-    }
-
   function load_mapa_direccion(direccion) {
 
       var geocoder = new google.maps.Geocoder();
